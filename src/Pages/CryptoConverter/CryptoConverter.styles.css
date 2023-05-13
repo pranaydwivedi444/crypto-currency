@@ -1,0 +1,16 @@
+.cryptoconverter__container {
+  margin: 3rem;
+  text-align: center;
+  min-width: 80vw;
+  font-size: 5rem;
+  /* display: flex;
+  flex-direction: column; */
+}
+
+@media screen and (max-width: 800px) {
+  .cryptoconverter__container {
+    display: flex;
+    flex-direction: column;
+    font-size: 3rem;
+  }
+}

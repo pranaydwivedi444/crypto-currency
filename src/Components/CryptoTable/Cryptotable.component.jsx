@@ -6,8 +6,10 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Showerror from "../UI/Error/ShowError.component";
 import Cointable from "../UI/Table/Table.component";
 
+//creating rows Data
 function createData(
   name,
   logo,
@@ -33,6 +35,7 @@ function Cryptotable() {
   //setting up coin Data
   const [rows, setRows] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   // async function to fetch coin data
   const fetchCryptoData = async () => {
@@ -58,7 +61,8 @@ function Cryptotable() {
       //setting the loading false
       setLoading(false);
     } catch (err) {
-      console.log(err);
+      setError(err.message);
+
       setLoading(false);
     }
   };
@@ -71,29 +75,15 @@ function Cryptotable() {
 
   //dark theme
 
-  const darkTheme = createTheme({
-    palette: {
-      primary: {
-        main: "#fff",
-      },
-      type: "dark",
-    },
-  });
-
   return (
     <>
-      <ThemeProvider theme={darkTheme}>
-        <Container
-          style={{
-            textAlign: "center",
-          }}
-        >
-          {/* if loading show loading cursor  */}
-          {loading && <LinearProgress />}
-          {/* shows the coin table */}
-          {!loading && <Cointable rows={rows} />}
-        </Container>
-      </ThemeProvider>
+      <Container>
+        {/* if loading show loading cursor  */}
+        {loading && <LinearProgress />}
+        {error && <Showerror message={error} />}
+        {/* shows the coin table */}
+        {!loading && !error && <Cointable rows={rows} />}
+      </Container>
     </>
   );
 }
