@@ -6,17 +6,28 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { makeStyles } from "@mui/material";
 //Function with to have commas
 function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 function Cointable({ rows }) {
+  // const useStyles = makeStyles(() => ({
+  //   tableHead: {
+  //     backgroundColor: "#006FDE",
+  //     cursor: "pointer",
+  //   },
+  // }));
+  // const classes = useStyles();
   return (
     <>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table" stickyHeader>
-          <TableHead style={{ backgroundColor: "#006FDE" }}>
+          <TableHead
+            // className={classes.tableHead}
+            style={{ backgroundColor: "#006FDE" }}
+          >
             <TableRow>
               <TableCell>Coin </TableCell>
               <TableCell align="right">Price ₹</TableCell>
@@ -58,7 +69,16 @@ function Cointable({ rows }) {
                       fontWeight: "bold",
                     }}
                   >
-                    {row.change24h.toFixed(2)}
+                    ₹ {numberWithCommas(row.change24h.toFixed(2))}
+                  </span>
+                  <span
+                    style={{
+                      color: row.change24hPercentage > 0 ? "green" : "red",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    {` `}
+                    {`(${row.change24hPercentage.toFixed(2)})`}%
                   </span>
                 </TableCell>
                 <TableCell align="right">
@@ -68,10 +88,18 @@ function Cointable({ rows }) {
                       fontWeight: "bold",
                     }}
                   >
-                    {row.change7d.toFixed(2)}
+                    ₹ {numberWithCommas(row.change7d.toFixed(2))}
+                  </span>
+                  <span
+                    style={{
+                      color: row.change7dPercentage > 0 ? "green" : "red",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    {` `}
+                    {`(${row.change7dPercentage.toFixed(2)})`}%
                   </span>
                 </TableCell>
-                <TableCell align="right">{row.cap}</TableCell>
               </TableRow>
             ))}
           </TableBody>
