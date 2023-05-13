@@ -6,28 +6,18 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { makeStyles } from "@mui/material";
+
 //Function with to have commas
 function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 function Cointable({ rows }) {
-  // const useStyles = makeStyles(() => ({
-  //   tableHead: {
-  //     backgroundColor: "#006FDE",
-  //     cursor: "pointer",
-  //   },
-  // }));
-  // const classes = useStyles();
   return (
     <>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table" stickyHeader>
-          <TableHead
-            // className={classes.tableHead}
-            style={{ backgroundColor: "#006FDE" }}
-          >
+          <TableHead sx={{ bgcolor: "#006FDE" }}>
             <TableRow>
               <TableCell>Coin </TableCell>
               <TableCell align="right">Price ₹</TableCell>
