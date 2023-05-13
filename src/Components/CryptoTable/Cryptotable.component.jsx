@@ -8,7 +8,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Cointable from "../UI/Table/Table.component";
 
-function createData(name, logo, price, change24h, change7d) {
+function createData(name, logo, price, change24h, sparkline) {
+  const change7d = price - sparkline.price[0];
   return { name, logo, price, change24h, change7d };
 }
 
@@ -20,7 +21,7 @@ function Cryptotable() {
     try {
       setLoading(true);
       const { data } = await axios.get(
-        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=INR&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=7d&locale=en`
+        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=INR&order=market_cap_desc&per_page=100&page=1&sparkline=true&price_change_percentage=7d`
       );
       console.log(data);
       const rows = data.map((coin) =>
@@ -29,7 +30,8 @@ function Cryptotable() {
           coin.image,
           coin.current_price,
           coin.price_change_24h,
-          coin.price_change_percentage_7d
+          // coin.price_change_percentage_7d_in_currency,
+          coin.sparkline_in_7d
         )
       );
       setRows(rows);

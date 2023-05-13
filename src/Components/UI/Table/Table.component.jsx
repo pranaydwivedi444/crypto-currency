@@ -6,6 +6,10 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+//Function with to have commas
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
 function Cointable({ rows }) {
   return (
@@ -15,10 +19,9 @@ function Cointable({ rows }) {
           <TableHead style={{ backgroundColor: "#006FDE" }}>
             <TableRow>
               <TableCell>Coin </TableCell>
-              <TableCell align="right">Price</TableCell>
+              <TableCell align="right">Price ₹</TableCell>
               <TableCell align="right">24h Change</TableCell>
               <TableCell align="right">7d Change</TableCell>
-              <TableCell align="right">Market Cap</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -45,7 +48,9 @@ function Cointable({ rows }) {
                   />
                   {row.name}
                 </TableCell>
-                <TableCell align="right">₹{row.price}</TableCell>
+                <TableCell align="right">
+                  ₹ {numberWithCommas(row.price.toFixed(2))}
+                </TableCell>
                 <TableCell align="right">
                   <span
                     style={{
@@ -53,7 +58,7 @@ function Cointable({ rows }) {
                       fontWeight: "bold",
                     }}
                   >
-                    {row.change24h}%
+                    {row.change24h.toFixed(2)}
                   </span>
                 </TableCell>
                 <TableCell align="right">
@@ -63,7 +68,7 @@ function Cointable({ rows }) {
                       fontWeight: "bold",
                     }}
                   >
-                    {row.change7d}%
+                    {row.change7d.toFixed(2)}
                   </span>
                 </TableCell>
                 <TableCell align="right">{row.cap}</TableCell>
