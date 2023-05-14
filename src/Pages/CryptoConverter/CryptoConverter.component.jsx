@@ -6,25 +6,25 @@ import { Button, LinearProgress, MenuItem, TextField } from "@mui/material";
 import "./CryptoConverter.styles.css";
 import numberWithCommas from "../../helperFunctions/helperFunction";
 
-//crypto currencies array
-const currencies = [
-  {
-    value: "USD",
-    label: "$ DOLLAR",
-  },
-  {
-    value: "EUR",
-    label: "€ EURO",
-  },
-  {
-    value: "INR",
-    label: "₹ RUPEE",
-  },
-  {
-    value: "JPY",
-    label: "¥ YEN",
-  },
-];
+// currencies array
+// const currencies = [
+//   {
+//     value: "USD",
+//     label: "$ DOLLAR",
+//   },
+//   {
+//     value: "EUR",
+//     label: "€ EURO",
+//   },
+//   {
+//     value: "INR",
+//     label: "₹ RUPEE",
+//   },
+//   {
+//     value: "JPY",
+//     label: "¥ YEN",
+//   },
+// ];
 
 //crypto currencies array
 const cryptoValues = [
@@ -46,7 +46,7 @@ function CryptoConverter() {
   //from crtpyo currency
   const [fromCurrency, setFromCurrency] = useState("BTC");
   //to real currency
-  const [toCurrency, setToCurrency] = useState("INR");
+  const [toCurrency, setToCurrency] = useState("ETH");
   //setting up loading state
   const [loading, setLoading] = useState(false);
   //setting up amount in currency
@@ -57,7 +57,8 @@ function CryptoConverter() {
   const [error, setError] = useState(null);
 
   const apiKey = process.env.REACT_APP_CRYPTO_API_KEY;
-  const apiUrl = `https://min-api.cryptocompare.com/data/price?fsym=${fromCurrency}&tsyms=${toCurrency},INR&api_key=${apiKey}`;
+  // const apiUrl = `https://min-api.cryptocompare.com/data/price?fsym=${fromCurrency}&tsyms=${toCurrency},INR&api_key=${apiKey}`;
+  const apiUrl = `https://min-api.cryptocompare.com/data/price?fsym=${fromCurrency}&tsyms=${toCurrency}&api_key=${apiKey}`;
 
   // async function to fetch API for conversion called only on clicking convert
   const fetchConversionData = async () => {
@@ -130,7 +131,7 @@ function CryptoConverter() {
             onChange={handleToCurrencyChange}
             sx={{ padding: "1rem" }}
           >
-            {currencies.map((option) => (
+            {cryptoValues.map((option) => (
               <MenuItem key={option.value} value={option.value}>
                 {option.label}
               </MenuItem>
