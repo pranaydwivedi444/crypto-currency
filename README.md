@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# Crypto Tracker and Converter
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a React-based single-page application (SPA) that allows users to track the live trading values of various cryptocurrencies, as well as convert one cryptocurrency to another. The app uses Material UI for its design and styling.
+**Live link ** : https://crypto-currency-drab.vercel.app/
+![image](https://github.com/pranaydwivedi444/crypto-currency/assets/48515987/5d934e2d-fc54-4d3d-a754-5ba31a9a105f)
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Live Trading Values:** The app provides real-time trading values for various cryptocurrencies. Users can see the current traded value per coin.
 
-### `npm start`
+- **24-hour Change:** The app tracks the net rise/fall of each cryptocurrency over the past 24 hours and displays it with an appropriate color (green for rise and red for fall).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **7-day Change:** The app also tracks the net rise/fall of each cryptocurrency over the past 7 days and displays it with an appropriate color (green for rise and red for fall).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Logo of Coin:** The app displays the logo of each cryptocurrency along with its name and current trading value.
 
-### `npm test`
+- **Pagination:** The app uses pagination to make it easy for users to navigate through the list of cryptocurrencies.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Cryptocurrency Conversion:** The app also allows users to convert one cryptocurrency to another. Users can select the cryptocurrency they want to convert from, enter the amount they want to convert, and select the cryptocurrency they want to convert to. The app will then display the conversion rate and the converted value.
 
-### `npm run build`
+## Technologies Used
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- React
+- Material UI
+- Axios
+- Cryptocompare API
+- coin Gecko API
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Getting Started
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To get started with this app, you will need to:
 
-### `npm run eject`
+1. Clone this repository to your local machine.
+2. Install dependencies by running `npm install` in the project directory.
+3. Get an API key from [Cryptocompare API](https://min-api.cryptocompare.com/).
+4. Create a `.env` file in the project root and add your API key using the following format: `REACT_APP_API_KEY=YOUR_API_KEY_HERE`.
+5. Run the app using `npm start`.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
