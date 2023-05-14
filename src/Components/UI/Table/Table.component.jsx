@@ -13,7 +13,7 @@ function Cointable({ rows }) {
     <>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table" stickyHeader>
-          <TableHead sx={{ bgcolor: "#006FDE" }}>
+          <TableHead>
             <TableRow>
               <TableCell>Coin </TableCell>
               <TableCell align="right">Price ₹</TableCell>
@@ -25,7 +25,16 @@ function Cointable({ rows }) {
             {rows.map((row) => (
               <TableRow
                 key={row.name}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                sx={{
+                  "&:last-child td, &:last-child th": { border: 0 },
+                  "&:hover": {
+                    backgroundColor: "#B3D2F1 ",
+                    transform: "scale(1.02)",
+                    boxShadow: " 0 0 10px rgba(0, 0, 0, 0.2)",
+                    cursor: "pointer",
+                    textShadow: "0.1px 0.1px 0.1px black",
+                  },
+                }}
               >
                 <TableCell
                   component="th"
