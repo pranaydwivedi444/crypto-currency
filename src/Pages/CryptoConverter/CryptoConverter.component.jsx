@@ -162,7 +162,7 @@ function CryptoConverter() {
 
           {/* {   Results} */}
           <p>{`${amount} ${fromCurrency} = ${numberWithCommas(
-            result
+            result.toFixed(3)
           )} ${toCurrency}`}</p>
         </div>
       </Container>
