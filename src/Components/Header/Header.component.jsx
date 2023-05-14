@@ -141,7 +141,10 @@ function Header() {
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: "white", display: "block" }}
                 >
-                  <span onClick={() => navigateRoute(page)}>{page}</span>
+                  <Typography onClick={() => navigateRoute(page)}>
+                    {page}{" "}
+                  </Typography>
+                  {/* <span onClick={() => navigateRoute(page)}>{page}</span> */}
                 </Button>
               ))}
             </Box>

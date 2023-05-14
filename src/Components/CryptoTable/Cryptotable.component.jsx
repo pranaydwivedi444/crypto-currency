@@ -1,12 +1,8 @@
-import {
-  Container,
-  createTheme,
-  LinearProgress,
-  ThemeProvider,
-} from "@mui/material";
+import { Container, LinearProgress } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Showerror from "../UI/Error/ShowError.component";
+import PaginationUI from "../UI/Pagination/Pagination.component";
 import Cointable from "../UI/Table/Table.component";
 
 //creating rows Data
@@ -36,6 +32,13 @@ function Cryptotable() {
   const [rows, setRows] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [page, setPage] = useState(1);
+  const [numberOfPages, setNumberOfPages] = useState(10);
+
+  const handlePageChange = (value) => {
+    setPage(value);
+    window.scroll(0, 0);
+  };
 
   // async function to fetch coin data
   const fetchCryptoData = async () => {
@@ -43,7 +46,7 @@ function Cryptotable() {
       //setting the loading true until fetching operation completes
       setLoading(true);
       const { data } = await axios.get(
-        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=INR&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=7d`
+        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=INR&order=market_cap_desc&per_page=10&page=${page}&sparkline=false&price_change_percentage=7d`
       );
       console.log(data);
       const rows = data.map((coin) =>
@@ -58,6 +61,10 @@ function Cryptotable() {
         )
       );
       setRows(rows);
+      // const totalPages = headers["total-pages"];
+
+      // setNumberOfPages(totalPages);
+      // totalPages = Math.ceil(totalResults / resultsPerPage);
       //setting the loading false
       setLoading(false);
     } catch (err) {
@@ -71,7 +78,7 @@ function Cryptotable() {
   useEffect(() => {
     fetchCryptoData();
     return () => {};
-  }, []);
+  }, [page]);
 
   //dark theme
 
@@ -83,6 +90,13 @@ function Cryptotable() {
         {error && <Showerror message={error} />}
         {/* shows the coin table */}
         {!loading && !error && <Cointable rows={rows} />}
+        {!loading && !error && (
+          <PaginationUI
+            handlePageChange={handlePageChange}
+            page={page}
+            numberOfPages={numberOfPages}
+          />
+        )}
       </Container>
     </>
   );
