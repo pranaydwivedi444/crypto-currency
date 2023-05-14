@@ -34,7 +34,7 @@ function Cryptotable() {
   const [error, setError] = useState(null);
   const [page, setPage] = useState(1);
   const [numberOfPages, setNumberOfPages] = useState(10);
-
+  //handling page change here
   const handlePageChange = (value) => {
     setPage(value);
     window.scroll(0, 0);
@@ -48,7 +48,7 @@ function Cryptotable() {
       const { data } = await axios.get(
         `https://api.coingecko.com/api/v3/coins/markets?vs_currency=INR&order=market_cap_desc&per_page=10&page=${page}&sparkline=false&price_change_percentage=7d`
       );
-      console.log(data);
+      // console.log(data);
       const rows = data.map((coin) =>
         createData(
           coin.name,
