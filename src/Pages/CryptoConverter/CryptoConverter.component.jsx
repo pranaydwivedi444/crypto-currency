@@ -4,6 +4,7 @@ import { Container } from "@mui/system";
 import Showerror from "../../Components/UI/Error/ShowError.component";
 import { Button, LinearProgress, MenuItem, TextField } from "@mui/material";
 import "./CryptoConverter.styles.css";
+import numberWithCommas from "../../helperFunctions/helperFunction";
 
 //crypto currencies array
 const currencies = [
@@ -159,7 +160,9 @@ function CryptoConverter() {
           {loading && <LinearProgress />}
 
           {/* {   Results} */}
-          <p>{`${amount} ${fromCurrency} = ${result} ${toCurrency}`}</p>
+          <p>{`${amount} ${fromCurrency} = ${numberWithCommas(
+            result
+          )} ${toCurrency}`}</p>
         </div>
       </Container>
     </>
@@ -167,28 +170,3 @@ function CryptoConverter() {
 }
 
 export default CryptoConverter;
-
-{
-  /* <select value={fromCurrency} onChange={handleFromCurrencyChange}>
-          <option value="BTC">Bitcoin (BTC)</option>
-          <option value="ETH">Ethereum (ETH)</option>
-          <option value="LTC">Litecoin (LTC)</option>
-        </select> */
-}
-{
-  /* <select value={toCurrency} onChange={handleToCurrencyChange}>
-          <option value="INR">Indian Rupees (INR)</option>
-          <option value="USD">US Dollar (USD)</option>
-          <option value="EUR">Euro (EUR)</option>
-          <option value="JPY">Japanese Yen (JPY)</option>
-        </select> */
-}
-
-{
-  /* <input
-          type="number"
-          min={1}
-          value={amount}
-          onChange={handleAmountChange}
-        /> */
-}
