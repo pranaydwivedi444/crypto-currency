@@ -8,7 +8,19 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import numberWithCommas from "../../../helperFunctions/helperFunction";
 
+
 function Cointable({ rows }) {
+  const tableRowStyles = {
+  "&:last-child td, &:last-child th": { border: 0 },
+  "&:hover": {
+    backgroundColor: "#B3D2F1 ",
+    transform: "scale(1.02)",
+    boxShadow: " 0 0 10px rgba(0, 0, 0, 0.2)",
+    cursor: "pointer",
+    textShadow: "0.1px 0.1px 0.1px black",
+  },
+};
+  
   return (
     <>
       <TableContainer component={Paper}>
@@ -25,16 +37,7 @@ function Cointable({ rows }) {
             {rows.map((row) => (
               <TableRow
                 key={row.name}
-                sx={{
-                  "&:last-child td, &:last-child th": { border: 0 },
-                  "&:hover": {
-                    backgroundColor: "#B3D2F1 ",
-                    transform: "scale(1.02)",
-                    boxShadow: " 0 0 10px rgba(0, 0, 0, 0.2)",
-                    cursor: "pointer",
-                    textShadow: "0.1px 0.1px 0.1px black",
-                  },
-                }}
+                sx={tableRowStyles}
               >
                 <TableCell
                   component="th"
@@ -47,8 +50,8 @@ function Cointable({ rows }) {
                   }}
                 >
                   <img
-                    src={row.logo}
-                    alt={row.name}
+                    src={row?.logo}
+                    alt={row?.name}
                     width="30"
                     style={{ marginBottom: "8" }}
                   />
