@@ -80,23 +80,29 @@ function Cryptotable() {
     return () => {};
   }, [page]);
 
-  //dark theme
+  //if error show the error
+  if (error) {
+    return <>{error && <Showerror message={error} />}</>;
+  }
+
+  /* if loading show loading cursor  */
+  if (loading) {
+    return <>{loading && <LinearProgress />}</>;
+  }
 
   return (
     <>
       <Container>
-        {/* if loading show loading cursor  */}
-        {loading && <LinearProgress />}
-        {error && <Showerror message={error} />}
         {/* shows the coin table */}
-        {!loading && !error && <Cointable rows={rows} />}
-        {!loading && !error && (
+        {<Cointable rows={rows} />}
+        {/* {shows Pagination} */}
+        {
           <PaginationUI
             handlePageChange={handlePageChange}
             page={page}
             numberOfPages={numberOfPages}
           />
-        )}
+        }
       </Container>
     </>
   );
