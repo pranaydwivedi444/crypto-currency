@@ -82,12 +82,12 @@ function Cryptotable() {
 
   //if error show the error
   if (error) {
-    return <>{error && <Showerror message={error} />}</>;
+    return <>{ <Showerror message={error} />}</>;
   }
 
   /* if loading show loading cursor  */
   if (loading) {
-    return <>{loading && <LinearProgress />}</>;
+    return <>{ <LinearProgress />}</>;
   }
 
   return (
