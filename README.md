@@ -2,6 +2,7 @@
 
 This is a React-based single-page application (SPA) that allows users to track the live trading values of various cryptocurrencies, as well as convert one cryptocurrency to another. The app uses Material UI for its design and styling.
 **Live link ** : https://crypto-currency-drab.vercel.app/
+Explaining project here : https://www.awesomescreenshot.com/video/17383877?key=e3e63494cb40b111ceb45a87ca59985f
 ![image](https://github.com/pranaydwivedi444/crypto-currency/assets/48515987/5d934e2d-fc54-4d3d-a754-5ba31a9a105f)
 
 ## Features
